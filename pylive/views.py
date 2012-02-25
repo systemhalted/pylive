@@ -33,11 +33,10 @@ def highlight_sourcecode(code):
     return generated_code
 
 def highlight_error(code):
-    code = code.split('Traceback')
     lexer = PythonTracebackLexer()
     formatter = HtmlFormatter(linenos = True)
-    generated_code = highlight(code[1], lexer, formatter)
-    #return generated_code.split('[Sub')[0])
+    generated_code = highlight(code, lexer, formatter)
+    return generated_code
 
 def check_error(error):
     """
@@ -53,20 +52,20 @@ def check_error(error):
     Traceback(normal error like syntax error, ImportError)
     """
     error_type = ''
-    if error.find("SIGTERM"):
+    if error.find("SIGTERM") > 0:
         error_type = 'timeout'
-    elif error.find('MemoryError'):
+    elif error.find('MemoryError') > 0:
         error_type = 'memory'
-    elif error.find("Traceback"):
+    elif error.find("Traceback") > 0:
         error_type = 'normal'
     else:
-        error_type = 'special'
+        error_type = None
     return error_type
 
 def process_error(errors):
-    errors = errors.replace(' ','&nbsp').split('\n')
+    errors = errors.split('\n')
     extracted_errors = errors[4:]
-    output = '<br/>'.join(extracted_errors)
+    output = '\n'.join(extracted_errors[:-2])
     return output
 
 @app.route('/execute/', methods=['GET'])
@@ -80,13 +79,15 @@ def execute_python():
     if write_to_file(filename, code):
         result = run(build_execution_command(base_filename))
         generated_code = highlight_sourcecode(code)
-        print result.std_err
-        print result.std_err.find('Traceback')
-        if result.std_err.find('Traceback') >= 0:
-            output = highlight_error(result.std_err)
-            return jsonify(success=1, output=output, code=generated_code)
-        else:
+        if result.std_out:
             return jsonify(success=1, output=result.std_out, code=generated_code)
+        else:
+            error_type = check_error(result.std_err)
+            d = {'timeout': TIMEOUT_MSG,
+                 'memory': MEMORY_MSG,
+                 'normal': highlight_error(process_error(result.std_err))}
+            print d['normal']        
+            return jsonify(success=1, output=d[error_type], code=generated_code)
     else:
         return jsonify(success=0, message='something is wrong from our end')
 
