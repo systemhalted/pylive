@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% from "_formhelper.html" import render_js, render_css %}
+{% block js %}
+    {{ render_js(names=['jquery.min.js']) }}
+    <script type="text/javascript">
+    $(document).ready(function()
+    {
+        $('.codes').keydown(function (e) {
+            if(e.which == 17)
+            {
+                var to_execute = $('.codes').val();
+                $.getJSON(document.URL + 'execute/',{code: to_execute},
+                         function(data){
+                            if(data.success == 1)
+                            {  
+                               var output = data.output;
+                               output = output.replace('\n', '<br/>');
+                               $('article.output').append('<div class=py_code>'+data.code+
+                               '</div>');
+                               $('article.output').append('<div class="py_output">' +
+                               output + '</div>') ;
+                                }
+                         });
+
+            }
+            });
+    });
+    </script>
+{% endblock %}
+{% block css %}
+    {{ render_css(names=['stylesheet.css', 'pygments_style.css']) }}
+{% endblock %}
+{% block menu %}
+{% endblock %}
+{% block content %}
+<section class="live_code">
+    <article class="output">
+        
+    </article>
+    <br/>
+    <textarea class="codes">
+    </textarea>
+<section>
+{% endblock %}
+

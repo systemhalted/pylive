@@ -1,0 +1,16 @@
+{% macro render_js(names) %}
+    {% if names %}
+        {% for name in names %}
+            <script src="{{ url_for('static', filename=name) }}" 
+            type="text/javascript"></script>
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+{% macro render_css(names) %}
+    {% if names %}
+        {% for name in names %}
+            <link href="{{ url_for('static', filename=name) }}" 
+            rel="stylesheet"></script>
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
