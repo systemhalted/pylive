@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% from "_formhelper.html" import render_css %}
+{% block title %}
+{% endblock %}
+{% block css %}
+    {{ render_css(names=['bootstrap.css', 'stylesheet.css']) }}
+{% endblock %}
+{% block content %}
+        {% include 'inc/menu.html' %}
+        <br/>
+        <br/>
+    <article class="welcome-message">
+        Welcome to pylive an online Python Interpreter(built on top pypy). 
+        Yes Talk is cheap, try some cool code. 
+        <br/>
+        <br/>
+        <a href="{{ url_for('pylive') }}" class="btn btn-primary btn-large"> Try Pylive </a>
+    
+    </p>
+{% endblock %}

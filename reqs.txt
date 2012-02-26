@@ -1,0 +1,6 @@
+flask
+jinja2
+nose
+pygments
+gunicorn
+envoy

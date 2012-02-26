@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% from "_formhelper.html" import render_css %}
+{% block css %}
+    {{ render_css(names=['bootstrap.css', 'stylesheet.css', 'pygments_style.css']) }}
+{% endblock %}
+{% block content %}
+    {% include 'inc/menu.html' %}
+    <br/>
+    <article class="features">
+        Pylive runs on top of sandboxed PyPy. There is no way, web frameworks or 
+        requests can run since they relay on socket module:(. 
+        In case any other useful module compatible with PyPy
+        will be installed. Feel free to request. 
+    <article>
+<section class="comments">
+    {% include 'inc/disqus_js.html' %}
+</section>
+
+{% endblock %}
+

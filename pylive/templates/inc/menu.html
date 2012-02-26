@@ -1,0 +1,18 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container">
+            <ul class="nav">
+                <li> <a href="{{url_for('index')}}"> Home </a></li>
+                <li> <a href="{{url_for('pylive')}}"> Live Python </a></li>
+                <li> <a href="{{url_for('examples')}}"> Examples </a></li>
+                <li> <a href="{{url_for('features')}}"> Feature Request </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br>
+<div class="social_bar">
+    {% include 'inc/social_buttons.html' %}
+    {% include 'inc/fb_js.html' %}
+    {% include 'inc/fb.html' %}
+</div>

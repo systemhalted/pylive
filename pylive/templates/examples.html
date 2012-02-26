@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% from "_formhelper.html" import render_css %}
+{% block css %}
+    {{ render_css(names=['bootstrap.css','stylesheet.css','pygments_style.css'])}}
+{% endblock %}
+{% block content %}
+    {% include 'inc/menu.html' %}
+    <br/>
+<article class="example">
+<div class="highlight"><pre><center>Example 1</center><span class="k">print</span> <span class="s">&quot;I love python&quot;</span><hr>
+</pre>
+<pre>
+<center>Example 2</center>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">x</span></pre>
+
+<pre>
+<center>Example 3</center>
+<span class="k">print</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+</pre>
+
+<pre>
+<center>Example 4</center>
+<span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">no</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Function will return true or false &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">no</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">no</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">is_prime</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+</pre>
+<pre>
+<center>Example 5</center>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This </span>
+<span class="sd">is </span>
+<span class="sd">multiline comment in python</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c">#Single line comment in python</span>
+</pre>
+
+
+<pre>
+<center>Example 6</center>
+<span class="k">print</span> <span class="mi">256789</span> <span class="o">*</span> <span class="mi">2345667</span>
+
+<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_first_name</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">first_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_first_name</span>
+
+    <span class="nd">@first_name.setter</span>
+    <span class="k">def</span> <span class="nf">first_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first_name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_first_name</span> <span class="o">=</span> <span class="n">first_name</span>
+
+    <span class="nd">@first_name.deleter</span>
+    <span class="k">def</span> <span class="nf">first_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_first_name</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">first_name</span> <span class="o">=</span> <span class="s">&quot;Guido&quot;</span>
+<span class="k">print</span> <span class="n">p</span><span class="o">.</span><span class="n">first_name</span>
+</pre>
+
+<pre>
+<center>Example 7</center>
+<span class="n">indian_test_team</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s">&#39;Gambhir&#39;</span><span class="p">,</span> <span class="s">&#39;Sehwag&#39;</span><span class="p">,</span> <span class="s">&#39;Dravid&#39;</span><span class="p">,</span> <span class="s">&#39;Tendulkar&#39;</span><span class="p">,</span> <span class="s">&#39;Laxman&#39;</span><span class="p">,</span>\
+                     <span class="s">&#39;Dhoni&#39;</span><span class="p">,</span> <span class="s">&#39;Ashwin&#39;</span><span class="p">,</span> <span class="s">&#39;Praveen&#39;</span><span class="p">,</span> <span class="s">&#39;Zaheer&#39;</span><span class="p">,</span> <span class="s">&#39;Umesh&#39;</span><span class="p">,</span> <span class="s">&#39;Kolhi&#39;</span><span class="p">])</span>
+<span class="n">indian_odi_team</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s">&quot;Gambhir&quot;</span><span class="p">,</span> <span class="s">&quot;Tendulkar&quot;</span><span class="p">,</span> <span class="s">&quot;Sehwag&quot;</span><span class="p">,</span> <span class="s">&quot;Kolhi&quot;</span><span class="p">,</span> <span class="s">&quot;Raina&quot;</span><span class="p">,</span>\
+                      <span class="s">&quot;Dhoni&quot;</span><span class="p">,</span> <span class="s">&quot;Jadeja&quot;</span><span class="p">,</span><span class="s">&quot;Irfan&quot;</span><span class="p">,</span> <span class="s">&quot;Umesh&quot;</span><span class="p">,</span> <span class="s">&quot;Ashwin&quot;</span><span class="p">,</span> <span class="s">&quot;Praveen&quot;</span><span class="p">])</span>
+<span class="c">#lets find players who are not in indian odi team</span>
+<span class="k">print</span> <span class="n">indian_test_team</span> <span class="o">-</span> <span class="n">indian_odi_team</span>
+</pre>
+
+<pre>
+<center>Example 8</center>
+<span class="n">divide_by_2_or_3</span> <span class="o">=</span> <span class="p">[</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</article>
+{% endblock %}
