@@ -4,7 +4,8 @@
     {{ render_js(names=['jquery.min.js']) }}
     <script type="text/javascript">
     $(document).ready(function()
-    {
+    { 
+        $('.codes').focus();
         $('.codes').keydown(function (e) {
             if(e.which == 17)
             {
@@ -14,11 +15,14 @@
                             if(data.success == 1)
                             {  
                                var output = data.output;
-                               output = output.replace('\n', '<br/>');
+                               output = output.replace(new RegExp("\\n","g"), '<br/>');
+                               $('article.output').append('<center><b>[Code]</b></center>');
                                $('article.output').append('<div class=py_code>'+data.code+
                                '</div>');
-                               $('article.output').append('<div class="py_output">' +
+                               $('article.output').append('<div class="py_output">' +'<center><b>[Output]</b></center>'+
                                output + '</div>') ;
+                               $('article.output').append('<hr>');
+                               $('.py_output').children().last().focus();
                                 }
                          });
 
@@ -28,18 +32,22 @@
     </script>
 {% endblock %}
 {% block css %}
-    {{ render_css(names=['stylesheet.css', 'pygments_style.css']) }}
-{% endblock %}
-{% block menu %}
+    {{ render_css(names=['bootstrap.css', 'stylesheet.css', 'pygments_style.css']) }}
 {% endblock %}
 {% block content %}
+        {% include 'inc/menu.html' %}   
+<br/>
 <section class="live_code">
     <article class="output">
         
     </article>
+    <p> Enter the python code below and hit ctrl button </p>
     <br/>
     <textarea class="codes">
     </textarea>
 <section>
+<section class="comments">
+    {% include 'inc/disqus_js.html' %}
+</section>
 {% endblock %}
 

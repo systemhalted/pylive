@@ -1,26 +1,35 @@
 <!doctype html>
 <html>
     <head>
-        <title> Welcome to pylive - Python live interpreter - codespeaks.in | 
+        <title> Welcome to pylive - Python live interpreter - www.pylive.codespeaks.in | 
         {% block title %}
         {% endblock %}
         </title>
+        <!-- Analytics -->
+        <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-29502808-1']);
+        _gaq.push(['_setDomainName', 'codespeaks.in']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                    })();
+        </script>
         {% block js %}
         {% endblock %}
         {% block css %}
         {% endblock %}
     </head>
     <body>
-        <nav>
-            {% block menu %}
-            {% endblock %}
-        </nav>
         <article>
             {% block content %}
             {% endblock %}
         </article>
         <footer>
-            
+            {% include 'inc/site_footer.html' %}
         </footer>
     </body>
 </html>

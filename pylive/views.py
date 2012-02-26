@@ -14,9 +14,21 @@ def build_execution_command(filename):
     return command
 
 
+@app.route('/pylive/')
+def pylive():
+    return render_template('live.html')
+
 @app.route('/')
 def index():
-    return render_template('live.html')
+    return render_template('index.html')
+
+@app.route('/examples/')
+def examples():
+    return render_template('examples.html')
+
+@app.route('/features/')
+def features():
+    return render_template('features.html')
 
 def write_to_file(filename, code):
     try:
@@ -68,7 +80,7 @@ def process_error(errors):
     output = '\n'.join(extracted_errors[:-2])
     return output
 
-@app.route('/execute/', methods=['GET'])
+@app.route('/pylive/execute/', methods=['GET'])
 def execute_python():
     code = request.args.get('code')
     base = '_'.join(datetime.datetime.now().ctime().split()) 
@@ -85,7 +97,8 @@ def execute_python():
             error_type = check_error(result.std_err)
             d = {'timeout': TIMEOUT_MSG,
                  'memory': MEMORY_MSG,
-                 'normal': highlight_error(process_error(result.std_err))}
+                 'normal': highlight_error(process_error(result.std_err)),
+                  None: NOOUTPUT_MSG}
             print d['normal']        
             return jsonify(success=1, output=d[error_type], code=generated_code)
     else:
