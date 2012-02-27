@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% from "_formhelper.html" import render_css %}
 {% block css %}
-    {% render_css([names=['bootstrap.css', 'stylesheet.css']) %}
+    {{ render_css(names=['bootstrap.css', 'stylesheet.css']) }}
 {% endblock %}
 {% block content %}
     <p> We did something wrong, Sorry, Visit our 
-        <a href="{{ url_for('index') }}"> Home Page </a>
+        <a href="{{ url_for('index') }}" class="footer"> Home Page </a>
     </p>
 {% endblock %}

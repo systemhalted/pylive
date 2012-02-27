@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% from "_formhelper.html" import render_css %}
 {% block css %}
-    {% render_css([names=['bootstrap.css', 'stylesheet.css']) %}
+    {{ render_css(names=['bootstrap.css', 'stylesheet.css']) }}
 {% endblock %}
 {% block content %}
-    <p> You don't have access to the page, if you landed unfortunatel Visit the 
-        <a href="{{ url_for('index') }}"> Home Page </a> or Happy hacking !!!
+    <p> You don't have access to the page, if you landed unfortunately. Visit the 
+        <a href="{{ url_for('index') }}" class="footer"> Home Page </a> or Happy hacking !!!
     </p>
 {% endblock %}

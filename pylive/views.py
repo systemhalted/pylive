@@ -104,4 +104,15 @@ def execute_python():
     else:
         return jsonify(success=0, message='something is wrong from our end')
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('page_not_found.html')
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('internal_server_error.html')
+
+@app.errorhandler(403)
+def access_denied(e):
+    return render_template('access_denied.html')
 

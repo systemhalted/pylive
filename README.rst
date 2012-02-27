@@ -51,8 +51,17 @@ Installation can be found at http://doc.pypy.org/en/latest/sandbox.html
 - $(dev)/pylive$ python runserver.py => to start pylive, runs port 5000
     
         or
+
 - $(dev)/pylive$ gunicorn pylive:app => runs on port 8000
 
 - check out for deployment http://flask.pocoo.org/docs/deploying/others/
+
+TESTING
+=======
+
+- $cp sample/* YOURPY Virtual directory
+
+- $python tests.py (from project home folder)
+
 
 Any issues feel free to contact me. 

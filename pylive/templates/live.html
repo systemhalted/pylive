@@ -37,7 +37,7 @@
 {% block content %}
         {% include 'inc/menu.html' %}   
 <br/>
-<section class="live_code">
+<!--<section class="live_code">
     <article class="output">
         
     </article>
@@ -45,7 +45,21 @@
     <br/>
     <textarea class="codes">
     </textarea>
-<section>
+<section>-->
+<p>Type the beautiful python code and hit <b>Ctrl</b> in column 1 and output 
+will be rendered in column 2.</p>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span2">
+            <textarea class="codes">
+            </textarea>
+        </div>
+        <div class="span10">
+            <article class="output">
+            </article>
+        </div>
+    </div>
+</div>
 <section class="comments">
     {% include 'inc/disqus_js.html' %}
 </section>
