@@ -99,14 +99,12 @@ def execute_python():
                  'memory': MEMORY_MSG,
                  'normal': highlight_error(process_error(result.std_err)),
                   None: NOOUTPUT_MSG}
-            print d['normal']        
             return jsonify(success=1, output=d[error_type], code=generated_code)
     else:
         return jsonify(success=0, message='something is wrong from our end')
 
 @app.errorhandler(404)
 def page_not_found(e):
-    raise 
     return render_template('page_not_found.html')
 
 @app.errorhandler(500)
