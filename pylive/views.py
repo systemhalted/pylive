@@ -106,10 +106,12 @@ def execute_python():
 
 @app.errorhandler(404)
 def page_not_found(e):
+    raise 
     return render_template('page_not_found.html')
 
 @app.errorhandler(500)
 def internal_server_error(e):
+    
     return render_template('internal_server_error.html')
 
 @app.errorhandler(403)

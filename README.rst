@@ -63,5 +63,8 @@ TESTING
 
 - $python tests.py (from project home folder)
 
+IMPORTANT
+=========
+- Please generate a random character and update secret_key.
 
 Any issues feel free to contact me. 

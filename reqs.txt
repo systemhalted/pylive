@@ -4,3 +4,4 @@ nose
 pygments
 gunicorn
 envoy
+Flask-Mail
