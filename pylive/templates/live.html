@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% from "_formhelper.html" import render_js, render_css %}
 {% block js %}
-    {{ render_js(names=['jquery.min.js']) }}
+    {{ render_js(names=['jquery.min.js', 'jquery.scrollTo-min.js']) }}
     <script type="text/javascript">
     $(document).ready(function()
     { 
@@ -22,7 +22,8 @@
                                $('article.output').append('<div class="py_output">' +'<center><b>[Output]</b></center>'+
                                output + '</div>') ;
                                $('article.output').append('<hr>');
-                               $('.py_output').children().last().focus();
+                               var loc = $('.py_output').children().last();
+                               $('article.output').scrollTo(loc, {axis:'y'});
                                 }
                          });
 
