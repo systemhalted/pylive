@@ -2,3 +2,4 @@
 *.pyo
 dev/*
 *.swp
+pylive/constants.py

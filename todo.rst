@@ -7,3 +7,7 @@ dd/mm/yyyy
   - Request
   
 - Run Button (Hanging) - removed 
+
+- add couch db support - todo
+- admin interface to monitor - input & output - todo
+- server monitor - todo
