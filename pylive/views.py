@@ -7,6 +7,7 @@ from os.path import sep
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import get_lexer_for_filename, PythonTracebackLexer
+from cgi import escape
 
 def build_execution_command(filename):
     command = "%s %s --tmp=%s --timeout=%s --heapsize=%s %s %s"%(pypy_bin,\
@@ -92,7 +93,7 @@ def execute_python():
         result = run(build_execution_command(base_filename))
         generated_code = highlight_sourcecode(code)
         if result.std_out:
-            return jsonify(success=1, output=result.std_out, code=generated_code)
+            return jsonify(success=1, output=escape(result.std_out), code=generated_code)
         else:
             error_type = check_error(result.std_err)
             d = {'timeout': TIMEOUT_MSG,
