@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% from "_formhelper.html" import render_css %}
+{% block css %}
+    {{ render_css(names=['bootstrap.css', 'stylesheet.css']) }}
+{% endblock %}
+{% block content %}
+    <p> {{ msg }} 
+        <a href="{{ url_for('index') }}" class="footer"> Home Page </a>
+    </p>
+{% endblock %}

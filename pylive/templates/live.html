@@ -23,6 +23,8 @@
                                output + '</div>') ;
                                $('article.output').append('<hr>');
                                var loc = $('.py_output').children().last();
+                               $('div.u').replaceWith("<div class=url><br/>"+
+                                          data.url + "<br/>" + "</div>");
                                $('article.output').scrollTo(loc, {axis:'y'});
                                 }
                          });
@@ -48,6 +50,10 @@
     </textarea>
 <section>-->
 <p>Type the beautiful python code and hit <b>Shift + Enter</b> in column 1 and output  will be rendered in column 2.</p>
+<div class="u">
+    
+</div>
+<br/>
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="span2">

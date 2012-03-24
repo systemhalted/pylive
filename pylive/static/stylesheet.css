@@ -27,6 +27,15 @@ body
     color: black;
     float: right
 }
+.view_output
+{
+    background-color: white;
+    display: block;
+    line-height: 1.5;
+    padding: 9px;
+    overflow: auto;
+    color: black;
+}
 .codes
 {
     float: left; 
@@ -154,3 +163,15 @@ a.footer
 #loginInfo{
     width: 250px;
     }
+
+.url
+{
+    background-color: #333;
+    height: 50px;
+    color: white;
+
+}
+.url > a
+{
+    color: #999;
+}

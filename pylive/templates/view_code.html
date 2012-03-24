@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% from "_formhelper.html" import render_js, render_css %}
+{% block css %}
+    {{ render_css(names=['bootstrap.css', 'stylesheet.css', 'pygments_style.css']) }}
+{% endblock %}
+{% block content %}
+        {% include 'inc/menu.html' %}   
+        <article class="view_output">
+        <article class="py_code">
+            <center> [code] </center> {{ code }} 
+        </article>
+        <article class="py_output">
+           <center> [Output] </center>  {{ output }}
+        </article>
+        </article>
+<section class="comments">
+    {% include 'inc/disqus_js.html' %}
+</section>
+{% endblock %}
