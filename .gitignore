@@ -6,3 +6,4 @@ pylive/constants.py
 *.log
 pylive/code_cleanup_error.log
 pylive/code_cleanup.txt
+.pid
