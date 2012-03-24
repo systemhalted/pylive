@@ -122,3 +122,35 @@ a.footer
     color: #432165;
     font: 20px 'Palatino';
 }
+.login{
+    float: left;
+    margin-top: 10px;
+    max-width: 208px;
+    img{
+        margin-top: 3px;
+        }
+    .username{
+        font-weight: bold;
+        margin-top: 20px;
+        }
+
+        div a {
+                font-size: .7em;
+                color: #ccc;
+        }
+        text-align: center;
+    }
+
+.clickable:hover{
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    opacity: .5;
+    cursor: pointer;
+    
+}
+
+    
+
+
+#loginInfo{
+    width: 250px;
+    }

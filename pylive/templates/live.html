@@ -7,7 +7,7 @@
     { 
         $('.codes').focus();
         $('.codes').keydown(function (e) {
-            if(e.which == 17)
+            if(e.keyCode == 13 && e.shiftKey)
             {
                 var to_execute = $('.codes').val();
                 $.getJSON(document.URL + 'execute/',{code: to_execute},
@@ -47,8 +47,7 @@
     <textarea class="codes">
     </textarea>
 <section>-->
-<p>Type the beautiful python code and hit <b>Ctrl</b> in column 1 and output 
-will be rendered in column 2.</p>
+<p>Type the beautiful python code and hit <b>Shift + Enter</b> in column 1 and output  will be rendered in column 2.</p>
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="span2">

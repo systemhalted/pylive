@@ -1,4 +1,4 @@
-from flask import render_template, request, jsonify
+from flask import render_template, request, jsonify, session
 from pylive import app
 from envoy import run
 from constants import *
@@ -8,12 +8,16 @@ from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import get_lexer_for_filename, PythonTracebackLexer
 from cgi import escape
+from models import db_session, CodeSnippets
 
 def build_execution_command(filename):
     command = "%s %s --tmp=%s --timeout=%s --heapsize=%s %s %s"%(pypy_bin,\
                 pypy_interact,tmp,timeout, memory, pypy_c, filename)
     return command
 
+def store_to_db(any_object):
+    db_session.add(any_object)
+    db_session.commit()
 
 @app.route('/pylive/')
 def pylive():
@@ -93,13 +97,19 @@ def execute_python():
         result = run(build_execution_command(base_filename))
         generated_code = highlight_sourcecode(code)
         if result.std_out:
-            return jsonify(success=1, output=escape(result.std_out), code=generated_code)
+            output = escape(result.std_out)
+            code_snippet = CodeSnippets(code=generated_code, output=output)
+            store_to_db(code_snippet)
+            return jsonify(success=1, output=output, code=generated_code)
         else:
             error_type = check_error(result.std_err)
             d = {'timeout': TIMEOUT_MSG,
                  'memory': MEMORY_MSG,
                  'normal': highlight_error(process_error(result.std_err)),
                   None: NOOUTPUT_MSG}
+            error_snippet = CodeSnippets(code=generated_code,\
+                                                        output=d[error_type])
+            store_to_db(error_snippet)
             return jsonify(success=1, output=d[error_type], code=generated_code)
     else:
         return jsonify(success=0, message='something is wrong from our end')
