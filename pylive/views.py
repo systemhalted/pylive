@@ -15,6 +15,8 @@ from sqlalchemy.exc import *
 def build_execution_command(filename):
     command = "%s %s --tmp=%s --timeout=%s --heapsize=%s %s %s"%(pypy_bin,\
                 pypy_interact,tmp,timeout, memory, pypy_c, filename)
+    with open('debug.txt', 'a') as f:
+        f.writelines(command + "\n")
     return command
 
 ######################### db functions ###################################
@@ -38,6 +40,9 @@ def write_to_file(filename, code):
         return True
     except IOError:
         return False        
+    except Exception as e:
+        with open('debug.txt', 'a') as f:
+            f.writelines(e.message + "\n")
 
 def highlight_sourcecode(code):
     lexer = get_lexer_for_filename("python.py", stripall= True)
@@ -122,7 +127,11 @@ def execute_python():
     filename = sep.join([tmp, base_filename])
     filename_html = sep.join([tmp, base_html])
     if write_to_file(filename, code):
-        result = run(build_execution_command(base_filename))
+        try:
+            result = run(build_execution_command(base_filename))
+        except Exception as e:
+            with open('debug.txt', 'a') as f:
+                f.writelines(e.message + "\n")
         generated_code = highlight_sourcecode(code)
         if result.std_out:
             output = escape(result.std_out)

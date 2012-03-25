@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, Column, BigInteger, String, Sequence,\
                        Integer, ForeignKey, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
-from db_test_constants import db_username, db_password, db_name, db_server
+from db_prod_constants import db_username, db_password, db_name, db_server
 from datetime import datetime
 
 engine = create_engine('postgresql://%s:%s@%s/%s'%(db_username, db_password,\
