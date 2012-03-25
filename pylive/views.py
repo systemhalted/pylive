@@ -139,8 +139,8 @@ def execute_python():
             store_to_db(code_snippet)
             url = "/".join(["http://www.pylive.codespeaks.in/view",\
                                         str(int(code_snippet.code_id))])
-            msg = " ".join([" <a href=%s target=_blank>Click here</a>"%url, \
-                            " to view and share the code"])
+            msg = " ".join([" <a href=%s>%s</a>"%(url, url), \
+                            "  is permalink "])
 
             return jsonify(success=1, output=output, code=generated_code, \
                                                      url=msg)
