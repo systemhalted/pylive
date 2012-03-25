@@ -128,7 +128,7 @@ def execute_python():
             output = escape(result.std_out)
             code_snippet = CodeSnippets(code=generated_code, output=output)
             store_to_db(code_snippet)
-            url = "/".join(["http://pylive.codespeaks.in/view",\
+            url = "/".join(["http://www.pylive.codespeaks.in/view",\
                                         str(int(code_snippet.code_id))])
             msg = " ".join([" <a href=%s target=_blank>Click here</a>"%url, \
                             " to view and share the code"])
